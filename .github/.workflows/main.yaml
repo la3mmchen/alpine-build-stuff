@@ -1,5 +1,5 @@
-name: ci
-on: [push]
+name: cd
+on: [ push ]
 
 jobs:
 
@@ -23,5 +23,5 @@ jobs:
         tag: ${{ github.GITHUB_REF }}
         image: la3mmchen/alpine-build-stuff
         registry: ghcr.io
-        username: ${{ github.actor }}
+        username: ${{ github.ACTOR }}
         password: ${{ secrets.PUSHTOKEN }} 
