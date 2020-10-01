@@ -19,8 +19,23 @@ jobs:
     - name: push the image
       uses: mr-smithers-excellent/docker-build-push@v4
       with:
-        name: la3mmchen/alpine-build-stuff
         tag: ${{ github.GITHUB_REF }}
+        image: la3mmchen/alpine-build-stuff
+        registry: ghcr.io
+        username: ${{ github.ACTOR }}
+        password: ${{ secrets.PUSHTOKEN }} 
+
+  publish-latest:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1 
+    - name: print commit sha
+      run: echo ${{ github.sha }}
+    - name: push the image
+      uses: mr-smithers-excellent/docker-build-push@v4
+      with:
+        tag: lastest
         image: la3mmchen/alpine-build-stuff
         registry: ghcr.io
         username: ${{ github.ACTOR }}
