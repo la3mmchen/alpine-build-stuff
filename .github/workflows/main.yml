@@ -35,7 +35,7 @@ jobs:
     - name: push the image
       uses: mr-smithers-excellent/docker-build-push@v4
       with:
-        tag: lastest
+        tag: latest
         image: la3mmchen/alpine-build-stuff
         registry: ghcr.io
         username: ${{ github.ACTOR }}
